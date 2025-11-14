@@ -15,5 +15,6 @@ RUN unzip pb.zip -d /app && rm pb.zip
 # Expose the port PocketBase will run on
 EXPOSE 10000
 
-# Start PocketBase, storing data in /data
-CMD ["./pocketbase", "serve", "--http=0.0.0.0:10000", "--dir=/data"]
+# Always recreate superuser before serving
+CMD ./pocketbase superuser upsert beemub@aol.com Bee123 && \
+    ./pocketbase serve --http=0.0.0.0:10000 --dir=/app/data
