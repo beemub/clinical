@@ -16,5 +16,6 @@ RUN unzip pb.zip -d /app && rm pb.zip
 EXPOSE 10000
 
 # Always recreate superuser before serving
-CMD ./pocketbase superuser upsert beemub@aol.com Bee123 && \
+CMD ./pocketbase superuser upsert beemub@aol.com PbBee123 && \
     ./pocketbase serve --http=0.0.0.0:10000 --dir=/app/data
+
